@@ -1,6 +1,6 @@
 # pandas-ladder
 
-This project demonstrates how to use Pandas to first create a timeseries binning dataframe which is done grouped and aggregated accordingly by a number of columns. 
+This project demonstrates how to use Pandas to first create a timeseries binning dataframe which is first grouped and aggregated accordingly by a number of columns. 
 
 The dataset is then pivoted through the stack() method. 
 
