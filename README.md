@@ -1,4 +1,4 @@
-#pandas-ladder
+# pandas-ladder
 
 This project demonstrates how to use Pandas to first create a timeseries binning dataframe which is done grouped and aggregated accordingly by a number of columns. 
 
