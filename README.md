@@ -17,7 +17,8 @@ data = {
 ## How it works
 ### Cutting the dataframe to build the bins (buckets) by timeseries
 After converting the time periods into numpy datetime64 format, the Pandas cut() method is used to build the bins:
-```df['categories'] = pd.cut(df.index, list(map(datetup, bins)), labels=date_bins_labels)
+```
+df['categories'] = pd.cut(df.index, list(map(datetup, bins)), labels=date_bins_labels)
 ```
 
 At this stage the data looks like this:
