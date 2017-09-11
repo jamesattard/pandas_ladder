@@ -20,8 +20,20 @@ def generate_df(df, start_date, date_bins, date_bins_labels):
     df['date'] = pd.to_datetime(df['date'])
     df.set_index(['date'], inplace=True)
 
-    for period_bin in date_bins:
-        new_date = start_date+relativedelta(months =+ period_bin)
+    for period_bin in date_bins.split(","):
+        print(period_bin)
+        if period_bin[-1] == 'd':
+            period_bin = int(period_bin[:-1])
+            new_date = start_date+relativedelta(days =+ period_bin)
+        elif period_bin[-1] == 'm':
+            period_bin = int(period_bin[:-1])
+            new_date = start_date+relativedelta(months =+ period_bin)
+        elif period_bin[-1] == 'y':
+            period_bin = int(period_bin[:-1])
+            new_date = start_date+relativedelta(years =+ period_bin)
+        else:
+            period_bin = int(period_bin[:-1])
+            new_date = start_date+relativedelta(years =+ period_bin)
         bins.append(new_date)
 
     df['categories'] = pd.cut(df.index, list(map(datetup, bins)), labels=date_bins_labels)
@@ -47,10 +59,17 @@ data = {
     'colors': ['r', 'b', 'g', 'r', 'b', 'g', 'r', 'b', 'g', 'g']
 }
 
+"""
+Sample Data
+"""
 date_now = date.today()
-bins = [6,12,999]
-labels = ['Alpha', 'Beta', 'Omega']
+bins = "6d,3m,5y"
+labels = ['0 -> 6d', '6d -> 3m', '3m -> 5y'] # in reality these are date periods describing the bins
 
+
+"""
+Computation of binning
+"""
 lad1 = generate_df(data, date_now, bins, labels)
 print(lad1)
 
